@@ -3,191 +3,117 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Klinik Artha Medika</title>
-  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="icon" type="image/png" href="../image/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Klinik Atrtha Medika Malang</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/one-page-wonder.min.css" rel="stylesheet">
+
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-  <!--banner-->
-  <section id="banner" class="banner">
-    <div class="bg-color">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <div class="col-md-12">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#"><img src="../image/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
 
-            </div>
-            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li ><a>
-                  <?php
-                  $tanggal= mktime(date("m"),date("d"),date("Y"));
-                  echo "Tanggal : <b>".date("d-M-Y", $tanggal)."</b> ";
-                  date_default_timezone_set('Asia/Jakarta');
-                  $jam=date("H:i");
-                  echo "| Pukul : <b>". $jam." "."</b>";
-                  $a = date ("H");
-                  ?>   
-                </a></li>
-                <li><a href="#">Hai User -
-                  <?php
-                  if(isset($_SESSION['nama_lengkap']))
-                  {
-                    echo " " .$_SESSION["nama_lengkap"].'<br/>';
-                  }                  
-                  ?></a></li>
-                  <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <div class="container">
-          <div class="row">
-            <div class="banner-info">
-              <div class="banner-logo text-center">
-                <img src="img/logo.png" class="img-responsive">
-              </div>
-              <div class="banner-text text-center">
-                <h1 class="white">Klinik "Artha Medika"</h1>
-                <p>Jl. Ikan Tombro Timur No 50A Malang<br>Telp 082245655070</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--cta-->
-    <!--contact-->
-    <section id="contact" class="section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-          </div>
+<body>
 
-          <div class="col-md-4 col-sm-4">
-            <h3>Praktek Dokter</h3>
-            <?php
-            include '../process/conSQL.php';
-            $no = 1;
-            $query = "SELECT * FROM jadwal ORDER BY id_dokter asc";
-            $res = mysqli_query($con, $query);
-            if(mysqli_num_rows($res) == 0){
-              echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
-            }else{  
-             while($data = mysqli_fetch_assoc($res)){ 
-              echo "<div class='space'></div>";
-              $nama_dokter = $data['id_dokter'];
-              $nm = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter  ";
-              $result = mysqli_query($con, $nm);
-              $dataNm = mysqli_fetch_assoc($result);
-              echo "<p><i class='fa fa-user fa-fw pull-left fa-2x'></i>".$dataNm['nama']."<br>" .$data['hari']. " --- ".$data['jam_awal']." Sampai ".$data['jam_akhir']."</p>";
-            }
-          }
-          ?>
-        </div>
-        <div class="col-md-8 col-sm-8 marb20">
-          <div class="contact-info">
-            <h3 class="cnt-ttl">Form Antrian Online</h3>
-            <div class="space"></div>
-            <form enctype="multipart/form-data" action="./process/antri.php" method="post">
-              <div class="form-group">
-               <?php
-               include '../process/conSQL.php';
-               $month = date('m');
-               $day = date('d');
-               $year = date('Y');
-               $today = $year . '-' . $month . '-' . $day;
-               
-               echo "<label>Nomor Antrian Anda :".$no++."</label>";  
-               ?>
-               <label>Nomor Antrian Anda : 1</label>
-               <input type="hidden" name="nomor" id="nomor" value="1">
-             </div>
-             <div class="form-group">
-              <input type="hidden" name="id_antrian" id="id_antrian" value="<?php echo $id_antrian; ?>">
-              <?php
-              include '../process/conSQL.php';
-              $namapasien = $_SESSION['nama_lengkap'];
-              $pas = "SELECT id_pasien FROM pasien WHERE nama = '$namapasien'";
-              $result = mysqli_query($con, $pas);
-              $dataPas = mysqli_fetch_assoc($result);              
-              ?>
-              <input type="text" name="nama" class="form-control br-radius-zero" id="nama" value="<?php echo $namapasien; ?>" />
-              <input type="hidden" name="id_pasien" value="<?php echo $dataPas['id_pasien']; ?>">
-            </div>
-            <?php 
-            $month = date('m');
-            $day = date('d');
-            $year = date('Y');
-            $today = $year . '-' . $month . '-' . $day;
-            ?>
-            <div class="form-group">
-              <input type="date" class="form-control br-radius-zero" name="tgl" id="tgl" value="<?php echo $today; ?>" readonly>
-              <input type="hidden" name="status" id="status" value="Belum dilayani">
-            </div>
-            <div class="form-action">
-              <button type="submit" class="btn btn-form">Registrasi</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--/ contact-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Pilih Button Logout untuk keluar dari halaman ini.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-info" href="../index.php">Logout</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!--cta-->
-<!--footer-->
-<footer id="footer">
-  <div class="footer-line">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika
+      <a class="navbar-brand" href="#">WELCOME</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">KLINIK ARTHA MEDIKA</h1>
+        <h2 class="masthead-subheading mb-0">Medical and Health</h2>
+        <h2 class="">Kami menyediakan pelayanan medis bagi warga sekitar kecamatan Lowokwaru.</h2>
+        <a href="home-antrian.php" class="btn btn-primary btn-xl rounded-pill mt-5">Registrasi Antrian</a>
+      </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="img/01 (2).jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+              <h2 class="display-4">Tentang Kami</h2>
+              <p>Klinik Atrtha Medika Malang merupakan salah satu layanan yang ada di Rumah Sakit Prima Medika yang memberikan pelayanan kedokteran berupa pemeriksaan kesehatan, pengobatan dan penyuluhan kepada pasien atau masyarakat agar tidak terjadi penularan dan komplikasi penyakit, serta meningkatkan pengetahuan dan kesadaran masyarakat dalam bidang kesehatan.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</footer>
-<!--/ footer-->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
-<script src="contactform/contactform.js"></script>
-<!-- Logout Modal-->
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="img/02 (2).jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4">Pelayanan</h2>
+            <p>Pelayanan kami diberikan oleh dokter bersertifikasi dan memenuhi kompetensi dalam bidang masing-masing. Kami juga melayani layanan antrian online agar mempermudah pasien.<br>
+              <h5 class="display-5"> Jam Pelayanan</h5>
+              <p>Setiap Hari : 07.00 - 21.00 WIB</p>
+              <h5 class="display-5">Alamat</h5>
+              <p>Jl. Ikan Tombro Barat No.50A, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142</p>
+              <h5 class="display-5">Telepon</h5>
+              <p>(0341) 7711108</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <p class="m-0 text-center text-white small">Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
