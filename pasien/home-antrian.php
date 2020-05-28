@@ -3,99 +3,142 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>Klinik Atrtha Medika Malang</title>
-
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link rel="icon" type="image/png" href="../image/logo.png">
   <!-- Custom styles for this template -->
   <link href="css/one-page-wonder.min.css" rel="stylesheet">
-
 </head>
-
 <body>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">WELCOME</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="form-antrian.php">Registrasi</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="informasi-pasien.php">Informasi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </li>
+      <a class="navbar-brand" href="#">WELCOME - 
+        <?php
+        if(isset($_SESSION['nama_lengkap'])){
+          echo " " .$_SESSION["nama_lengkap"].'<br/>';
+        }?></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="informasi-pasien.php">Informasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </li>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
   <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="bg-primary text-white jumbotron text-center">
-  <h1>Selamat Datang di Aplikasi Pendaftaran <br>Pasien Secara Online</h1>
-  <p>Sistem Pelayanan Antrian Online</p> 
-</div>
-<div class="container">
-<div class="col-sm-8">
+  <html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="bg-primary text-white jumbotron text-center">
+     <img class="center" src="../image/logo.png" style="width:100px;height:100px;"/>
+     <h1>Selamat Datang di Aplikasi Pendaftaran <br>Pasien Secara Online</h1>
+     <p>Sistem Pelayanan Antrian Online</p> 
+   </div>
+   <div class="container">
+    <div class="col-sm-8">
       <h2>Antrian Online</h2>
-      <p>Antrian online merupakan layanan digital yang bisa dikatakan masih baru dari BPJS Ketenagakerjaan, yaitu mulai berlaku pada bulan Juli 2018 lalu untuk pencairan uang JHT secara manual atau secara langsung di kantor cabang. Layanan ini semacam booking nomer antrian, jadi peserta tidak perlu lagi datang shubuh dan rebutan nomer antrian yang di kantor BPJS TK.</p>
-      <p>Cara membuat antrian online Anda tinggal membuka website BPJS TK khusus registrasi antrian online yaitu: www.antrian.bpjsketenagakerjaan.go.id kemudian mengisi data-data yang diminta mulai dari NIK (Nomor Induk Kependudukan), nama sesuai KTP Elektronik, nomor KPJ (Kartu Peserta Jamsostek) atau no kartu BPJS Ketenagakerjaan, dan nomer HP yang masih aktif.</p>
+      <form enctype="multipart/form-data" action="./process/antri.php" method="post">
+        <div class="form-group">
+         <?php
+         include '../process/conSQL.php';
+         $no = 1;
+         $month = date('m');
+         $day = date('d');
+         $year = date('Y');
+         $today = $year . '-' . $month . '-' . $day;
+         echo "<label><h5>Nomor Antrian Anda : ".$no++."</h5></label>";  
+         ?>     
+         <input type="hidden" name="nomor" id="nomor" value="1">
+       </div>
+       <div class="form-group">
+        <input type="hidden" name="id_antrian" id="id_antrian" value="<?php echo $id_antrian; ?>">
+        <?php
+        include '../process/conSQL.php';
+        $namapasien = $_SESSION['nama_lengkap'];
+        $pas = "SELECT id_pasien FROM pasien WHERE nama = '$namapasien'";
+        $result = mysqli_query($con, $pas);
+        $dataPas = mysqli_fetch_assoc($result);              
+        ?>
+        <input type="text" name="nama" class="form-control br-radius-zero" id="nama" value="<?php echo $namapasien; ?>" readonly />
+        <input type="hidden" name="id_pasien" value="<?php echo $dataPas['id_pasien']; ?>" >
       </div>
+      <?php 
+      $month = date('m');
+      $day = date('d');
+      $year = date('Y');
+      $today = $year . '-' . $month . '-' . $day;
+      ?>
+      <div class="form-group">
+        <input type="date" class="form-control br-radius-zero" name="tgl" id="tgl" value="<?php echo $today; ?>" readonly>
+        <input type="hidden" name="status" id="status" value="Belum dilayani">
+      </div>
+      <div class="form-action">
+        <button type="submit" class="btn btn-primary">Registrasi</button>
+      </div>
+    </form>
   </div>
 </div>
-
-     
-  <style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
+</div>   
+<style>
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
 </style>
 
 <div class="footer">
   <p>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</p>
 </div>
-    </body>
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Pilih Button Logout untuk keluar dari halaman ini.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-info" href="../index.php">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
 </html>   
-                         

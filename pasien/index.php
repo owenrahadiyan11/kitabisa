@@ -3,39 +3,41 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>Klinik Atrtha Medika Malang</title>
-
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link rel="icon" type="image/png" href="../image/logo.png">
   <!-- Custom styles for this template -->
   <link href="css/one-page-wonder.min.css" rel="stylesheet">
-
 </head>
-
 <body>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">WELCOME</a>
+      <a class="navbar-brand" href="#"> <img class="center" src="../image/logo.png" style="width:50px;height:50px;"/>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#"> 
+              <?php
+                  if(isset($_SESSION['nama_lengkap']))
+                  {
+                    echo " " .$_SESSION["nama_lengkap"].'<br/>';
+                  }                  
+              ?></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </li>
@@ -44,7 +46,6 @@ session_start();
       </div>
     </div>
   </nav>
-
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
@@ -59,7 +60,6 @@ session_start();
     <div class="bg-circle-3 bg-circle"></div>
     <div class="bg-circle-4 bg-circle"></div>
   </header>
-
   <section>
     <div class="container">
       <div class="row align-items-center">
@@ -101,7 +101,6 @@ session_start();
       </div>
     </div>
   </section>
-
     <!-- Footer -->
   <footer class="py-5 bg-black">
     <div class="container">
@@ -109,11 +108,25 @@ session_start();
     </div>
     <!-- /.container -->
   </footer>
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Pilih Button Logout untuk keluar dari halaman ini.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-info" href="../index.php">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
-
 </html>
