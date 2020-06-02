@@ -87,7 +87,7 @@ session_start();
                <!-- Nav Item - User Information -->
                <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hai Admin - 
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hai Dokter - 
                    <?php
                    if(isset($_SESSION['nama_lengkap']))
                    {
@@ -111,135 +111,135 @@ session_start();
             </ul>
           </nav>
           <!-- End of Topbar -->
-         <!-- Begin Page Content -->
-                  <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                      <h1 class="h3 mb-0 text-gray-800">Rekam Medis</h1>
-                      <a href="datapasien.php" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Kembali</a>
-                    </div>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                      <div class="card-header py-3">
-                       <?php
-                       include '../process/conSQL.php';
-                       $id_pasien = $_GET['id_pasien'];
-                       $pas = "SELECT nama FROM pasien WHERE id_pasien = $id_pasien  ";
-                       $result = mysqli_query($con, $pas);
-                       $dataPas = mysqli_fetch_assoc($result);
-                       ?>
-                       <h6 class="m-0 font-weight-bold text-info">List Rekam Medis Pasien : <?php echo $dataPas['nama']?></h6>
-                     </div>
-                     <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>Nama Pasien</th>
-                              <th>Nama Dokter</th>
-                              <th>Tanggal</th>
-                              <th>Tekanan Darah</th>
-                              <th>Tinggi Badan</th>
-                              <th>Berat Badan</th>
-                              <th>Gejala</th>
-                              <th>Objek</th>
-                              <th>Diagnosa</th>
-                              <th>Tindakan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            include '../process/conSQL.php';
-                            $no = 1;
-                            $id_pasien = $_GET['id_pasien'];
-                            $query = "SELECT * FROM rekam_medis WHERE id_pasien='$id_pasien' ORDER BY id_pasien asc";
-                            $res = mysqli_query($con, $query);
-                            if(mysqli_num_rows($res) == 0){
-                              echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
-                            }else{  
-                             while($data = mysqli_fetch_assoc($res)){ 
-                              echo "<tr>";
-                              echo "<td>".$no++.".</td>";
-                              $nama_pasien = $data['id_pasien'];
-                              $nm = "SELECT nama FROM pasien WHERE id_pasien = $nama_pasien  ";
-                              $result = mysqli_query($con, $nm);
-                              $dataNm = mysqli_fetch_assoc($result);
-                              echo "<td>".$dataNm['nama']."</td>";
-                              $nama_dokter = $data['id_dokter'];
-                              $nm = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter  ";
-                              $result = mysqli_query($con, $nm);
-                              $dataNm = mysqli_fetch_assoc($result);
-                              echo "<td>".$dataNm['nama']."</td>";
-                              echo "<td>".$data['tgl']."</td>";
-                              echo "<td>".$data['tekanan_darah']."</td>";
-                              echo "<td>".$data['tb']."</td>";
-                              echo '<td>'.$data['bb'].'</td>';
-                              echo "<td>".$data['gejala']."</td>";
-                              echo "<td>".$data['objek']."</td>";
-                              echo '<td>'.$data['diagnosa'].'</td>';
-                              echo "<td>".$data['tindakan']."</td>";
-                              echo '</tr>';
-                            }
-                          }
-                          ?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <!-- /.container-fluid -->
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Rekam Medis</h1>
+              <a href="datapasien.php" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Kembali</a>
             </div>
-            <!-- End of Main Content -->
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+               <?php
+               include '../process/conSQL.php';
+               $id_pasien = $_GET['id_pasien'];
+               $pas = "SELECT nama FROM pasien WHERE id_pasien = $id_pasien  ";
+               $result = mysqli_query($con, $pas);
+               $dataPas = mysqli_fetch_assoc($result);
+               ?>
+               <h6 class="m-0 font-weight-bold text-info">List Rekam Medis Pasien : <?php echo $dataPas['nama']?></h6>
+             </div>
+             <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Pasien</th>
+                      <th>Nama Dokter</th>
+                      <th>Tanggal</th>
+                      <th>Tekanan Darah</th>
+                      <th>Tinggi Badan</th>
+                      <th>Berat Badan</th>
+                      <th>Gejala</th>
+                      <th>Objek</th>
+                      <th>Diagnosa</th>
+                      <th>Tindakan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    include '../process/conSQL.php';
+                    $no = 1;
+                    $id_pasien = $_GET['id_pasien'];
+                    $query = "SELECT * FROM rekam_medis WHERE id_pasien='$id_pasien' ORDER BY id_pasien asc";
+                    $res = mysqli_query($con, $query);
+                    if(mysqli_num_rows($res) == 0){
+                      echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
+                    }else{  
+                     while($data = mysqli_fetch_assoc($res)){ 
+                      echo "<tr>";
+                      echo "<td>".$no++.".</td>";
+                      $nama_pasien = $data['id_pasien'];
+                      $nm = "SELECT nama FROM pasien WHERE id_pasien = $nama_pasien  ";
+                      $result = mysqli_query($con, $nm);
+                      $dataNm = mysqli_fetch_assoc($result);
+                      echo "<td>".$dataNm['nama']."</td>";
+                      $nama_dokter = $data['id_dokter'];
+                      $nm = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter  ";
+                      $result = mysqli_query($con, $nm);
+                      $dataNm = mysqli_fetch_assoc($result);
+                      echo "<td>".$dataNm['nama']."</td>";
+                      echo "<td>".$data['tgl']."</td>";
+                      echo "<td>".$data['tekanan_darah']."</td>";
+                      echo "<td>".$data['tb']."</td>";
+                      echo '<td>'.$data['bb'].'</td>';
+                      echo "<td>".$data['gejala']."</td>";
+                      echo "<td>".$data['objek']."</td>";
+                      echo '<td>'.$data['diagnosa'].'</td>';
+                      echo "<td>".$data['tindakan']."</td>";
+                      echo '</tr>';
+                    }
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </footer>
-      <!-- End of Footer -->
+
+      </div>
+      <!-- /.container-fluid -->
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Main Content -->
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
   </div>
-  <!-- End of Page Wrapper -->
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-info" href="../logout.php">Logout</a>
-        </div>
+  <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-info" href="../logout.php">Logout</a>
       </div>
     </div>
   </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 </body>
 </html>

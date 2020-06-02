@@ -32,15 +32,15 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="#"> 
               <?php
-                  if(isset($_SESSION['nama_lengkap']))
-                  {
-                    echo " " .$_SESSION["nama_lengkap"].'<br/>';
-                  }                  
+              if(isset($_SESSION['nama_lengkap']))
+              {
+                echo " " .$_SESSION["nama_lengkap"].'<br/>';
+              }                  
               ?></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </li>
           </li>
         </ul>
       </div>
@@ -70,8 +70,8 @@ session_start();
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-              <h2 class="display-4">Tentang Kami</h2>
-              <p>Klinik Atrtha Medika Malang merupakan salah satu layanan yang ada di Rumah Sakit Prima Medika yang memberikan pelayanan kedokteran berupa pemeriksaan kesehatan, pengobatan dan penyuluhan kepada pasien atau masyarakat agar tidak terjadi penularan dan komplikasi penyakit, serta meningkatkan pengetahuan dan kesadaran masyarakat dalam bidang kesehatan.</p>
+            <h2 class="display-4">Tentang Kami</h2>
+            <p>Klinik Atrtha Medika Malang merupakan salah satu layanan yang ada di Rumah Sakit Prima Medika yang memberikan pelayanan kedokteran berupa pemeriksaan kesehatan, pengobatan dan penyuluhan kepada pasien atau masyarakat agar tidak terjadi penularan dan komplikasi penyakit, serta meningkatkan pengetahuan dan kesadaran masyarakat dalam bidang kesehatan.</p>
           </div>
         </div>
       </div>
@@ -96,37 +96,40 @@ session_start();
               <p>Jl. Ikan Tombro Barat No.50A, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142</p>
               <h5 class="display-5">Telepon</h5>
               <p>(0341) 7711108</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
     <!-- Footer -->
-  <footer class="py-5 bg-black">
-    <div class="container">
-      <p class="m-0 text-center text-white small">Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</p>
-    </div>
+    <footer class="sticky-footer bg-black">
+      <div class="container my-auto ">
+        <div class="copyright text-center my-auto text-white small ">
+          <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
+        </div>
+      </div>
+    </footer>
     <!-- /.container -->
   </footer>
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Pilih Button Logout untuk keluar dari halaman ini.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-info" href="../index.php">Logout</a>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Pilih Button Logout untuk keluar dari halaman ini.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-info" href="../index.php">Logout</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>
 </html>

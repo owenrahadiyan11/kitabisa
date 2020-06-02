@@ -87,7 +87,7 @@ session_start();
                <!-- Nav Item - User Information -->
                <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hai Admin - 
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hai Dokter - 
                    <?php
                    if(isset($_SESSION['nama_lengkap']))
                    {

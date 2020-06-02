@@ -112,21 +112,14 @@ session_start();
   </div>
 </div>
 </div>   
-<style>
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-  }
-</style>
-<div class="footer">
-  <p>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</p>
-</div>
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<footer class="sticky-footer bg-black">
+  <div class="container my-auto ">
+    <div class="copyright text-center my-auto text-white small ">
+      <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
+    </div>
+  </div>
+</footer>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

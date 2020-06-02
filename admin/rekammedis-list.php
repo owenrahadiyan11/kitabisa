@@ -18,7 +18,7 @@ session_start();
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <!-- Custom styles for this page -->
-    <link rel="icon" type="image/png" href="../image/logo.png">
+  <link rel="icon" type="image/png" href="../image/logo.png">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
@@ -215,7 +215,6 @@ session_start();
                       </div>
                     </div>
                   </div>
-
                 </div>
                 <!-- /.container-fluid -->
               </div>
@@ -250,7 +249,7 @@ session_start();
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                   <a class="btn btn-info" href="../logout.php">Logout</a>
+                  <a class="btn btn-info" href="../logout.php">Logout</a>
                 </div>
               </div>
             </div>

@@ -169,6 +169,7 @@ session_start();
                                 <th>Alamat</th>
                                 <th>Pekerjaan</th>
                                 <th>Telepon</th>
+                                <th>Rekam Medis</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
@@ -191,11 +192,12 @@ session_start();
                                 echo '<td>'.$data['pekerjaan'].'</td>';
                                 echo "<td>".$data['tlp']."</td>";
                                 echo "<td class='td-actions text-center'>";
+                                echo "<a class='btn btn-success btn-sm' rel='tooltip' href='rekammedis-tampil.php?id_pasien=".$data["id_pasien"]."'><i class='fas fa-list'></i></a>";
+                                echo "</td>";
+                                echo "<td class='td-actions text-center'>";
                                 echo "<a class='btn btn-warning btn-sm' rel='tooltip' href='edit-pasien.php?id_pasien=".$data["id_pasien"]."'><i class='fas fa-edit'></i></a>";
                                 echo "  ";
                                 echo "<a class='btn btn-danger btn-sm' rel='tooltip' href='hapus-pasien.php?id_pasien=".$data["id_pasien"]."'><i class='fas fa-trash'></i></a>";
-                                echo "  ";
-                                echo "<a class='btn btn-success btn-sm' rel='tooltip' href='rekammedis-tampil.php?id_pasien=".$data["id_pasien"]."'><i class='fas fa-list'></i></a>";
                                 echo "</td>";
                                 echo '</tr>';
                               }
