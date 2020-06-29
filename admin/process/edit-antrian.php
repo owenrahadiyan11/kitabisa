@@ -9,7 +9,7 @@ $status = $_POST["status"];
 $query = "UPDATE antrian SET id_pasien='$id_pasien', nomor='$nomor', tgl='$tgl', status='$status' WHERE id_antrian ='$id_antrian'";
 if(mysqli_query($con, $query)){
 	if($status == 'Sudah dilayani'){
-		echo "<script>alert('Berhasil Update Data');window.location='http://localhost/klinik/admin/rekammedis.php?id_pasien=$id_pasien'</script>";
+		echo "<script>alert('Berhasil Update Data');window.location='http://localhost/klinik/admin/rekammedis.php?id_pasien=$id_pasien&id_antrian=$id_antrian'</script>";
 	}else{
 		echo "<script>alert('Berhasil Update Data');window.location='../antrian-no.php'</script>";
 	}

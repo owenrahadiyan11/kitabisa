@@ -10,7 +10,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Klinik Arta Medika</title>
+  <title>Klinik Artha Medika</title>
   <!-- Custom fonts for this template-->
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -162,6 +162,7 @@ session_start();
                               <?php
                               include '../process/conSQL.php';
                               $id_pasien = $_GET['id_pasien'];
+                              $id_antrian = $_GET['id_antrian'];
                               $pas = "SELECT nama FROM pasien WHERE id_pasien = $id_pasien  ";
                               $result = mysqli_query($con, $pas);
                               $dataPas = mysqli_fetch_assoc($result);
@@ -169,6 +170,7 @@ session_start();
                               <label class="bmd-label-floating">Nama Pasien</label>
                               <input type="text" class="form-control" value="<?php echo $dataPas['nama']?>">
                               <input type="hidden" name="id_pasien" id="id_pasien" value="<?php echo $id_pasien; ?>">
+                              <input type="hidden" name="id_antrian" id="id_antrian" value="<?php echo $id_antrian; ?>">
                             </div>
                           </div>
                           

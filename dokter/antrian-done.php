@@ -9,7 +9,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Klinik Arta Medika</title>
+  <title>Klinik Artha Medika</title>
   <!-- Custom fonts for this template-->
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -233,8 +233,7 @@ session_start();
                       <?php
                       include '../process/conSQL.php';
                       $no = 1;
-                      $tgl =date("Y-m-d");
-                      $query = "SELECT * FROM antrian WHERE tgl='$tgl' AND status ='Sudah dilayani'";
+                      $query = "SELECT * FROM antrian WHERE tgl = CURDATE() AND status ='Sudah dilayani'";
                       $res = mysqli_query($con, $query);
                       if(mysqli_num_rows($res) == 0){
                         echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
@@ -243,7 +242,7 @@ session_start();
                         echo "<tr>";
                         echo "<td>".$no++.".</td>";
                         $nama_pasien = $data['id_pasien'];
-                        $nm = "SELECT nama FROM pasien WHERE id_pasien = $nama_pasien  ";
+                        $nm = "SELECT nama FROM pasien WHERE id_pasien = $nama_pasien";
                         $result = mysqli_query($con, $nm);
                         $dataNm = mysqli_fetch_assoc($result);
                         echo "<td>".$dataNm['nama']."</td>";
@@ -251,7 +250,7 @@ session_start();
                         echo "<td>".$data['tgl']."</td>";
                         echo "<td>".$data['status']."</td>";
                         echo "<td class='td-actions text-center'>";
-                        echo "<a class='btn btn-warning btn-sm' rel='tooltip' href='edit-rekammedis.php?id_pasien=".$data["id_pasien"]."'><i class='fas fa-edit'></i></a>";
+                        echo "<a class='btn btn-warning btn-sm' rel='tooltip' href='edit-rekammedis.php?id_pasien=".$data["id_pasien"]."&id_antrian=".$data["id_antrian"]."'><i class='fas fa-edit'></i></a>";
                         echo "</td>";
                         echo '</tr>';
                       }

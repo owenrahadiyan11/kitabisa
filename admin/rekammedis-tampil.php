@@ -10,7 +10,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Klinik Arta Medika</title>
+  <title>Klinik Artha Medika</title>
   <!-- Custom fonts for this template-->
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -215,8 +215,6 @@ session_start();
                               echo '<td>'.$data['diagnosa'].'</td>';
                               echo "<td>".$data['tindakan']."</td>";
                               echo "<td class='td-actions text-center'>";
-                              echo "<a class='btn btn-warning btn-sm' rel='tooltip' href='edit-rekammedis.php?id_medis=".$data["id_medis"]."'><i class='fas fa-edit'></i></a>";
-                              echo "  ";
                               echo "<a class='btn btn-danger btn-sm' rel='tooltip' href='hapus-rekammedis.php?id_medis=".$data["id_medis"]."'><i class='fas fa-trash'></i></a>";
                               echo '</tr>';
                             }

@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Sign Up | Klinik Atrtha Medika Malang</title>
+	<title>Sign Up | Klinik Artha Medika Malang</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="icon" type="image/png" href="../image/logo.png">

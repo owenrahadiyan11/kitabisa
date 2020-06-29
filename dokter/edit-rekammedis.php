@@ -9,7 +9,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Klinik Arta Medika</title>
+  <title>Klinik Artha Medika</title>
   <!-- Custom fonts for this template-->
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -128,6 +128,7 @@ session_start();
                        <?php
                        include '../process/conSQL.php';
                        $id_pasien = $_GET['id_pasien'];
+                       $id_antrian = $_GET['id_antrian'];
                        $query = "SELECT * FROM pasien WHERE id_pasien='$id_pasien'";
                        $show = mysqli_query($con, $query);
                        if(mysqli_num_rows($show) == 0){
@@ -159,7 +160,7 @@ session_start();
             <?php
             include '../process/conSQL.php';
             $id_pasien = $_GET['id_pasien'];
-            $query = "SELECT * FROM rekam_medis WHERE id_pasien='$id_pasien'";
+            $query = "SELECT * FROM rekam_medis WHERE id_pasien='$id_pasien' AND id_antrian='$id_antrian'";
             $show = mysqli_query($con, $query);
             if(mysqli_num_rows($show) == 0){
               echo '<script>window.history.back()</script>';
@@ -177,7 +178,7 @@ session_start();
                       <input type="hidden" name="id_medis" value="<?php echo $data['id_medis']; ?>">
                       <?php
                       include '../process/conSQL.php';
-                      $id_pasien = $data['id_pasien'];
+                      $id_antrian = $data['id_antrian'];
                       $pas = "SELECT nama FROM pasien WHERE id_pasien = $id_pasien  ";
                       $result = mysqli_query($con, $pas);
                       $dataPas = mysqli_fetch_assoc($result);

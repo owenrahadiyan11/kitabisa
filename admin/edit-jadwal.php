@@ -10,7 +10,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Klinik Arta Medika</title>
+  <title>Klinik Artha Medika</title>
   <!-- Custom fonts for this template-->
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -148,7 +148,7 @@ session_start();
                   <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                      <h1 class="h3 mb-0 text-gray-800">Form Registrasi Data Admin</h1>
+                      <h1 class="h3 mb-0 text-gray-800">Form Registrasi Jadwal Dokter</h1>
                     </div>
 
                     <!-- DataTales Example -->

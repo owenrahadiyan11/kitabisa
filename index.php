@@ -1,5 +1,11 @@
 <?php
 session_start();
+// create session to check date
+if (!isset($_SESSION['date']) && !isset($_SESSION['no_antrian'])) {
+	$_SESSION['date'] = date("Y-m-d");
+	$_SESSION['no_antrian'] = 1;
+}
+
 if(isset($_SESSION['nama_lengkap']) and isset($_SESSION['status']) and isset($_SESSION['level'])){
 	if($_SESSION['status'] == 'Aktif'){
 		if($_SESSION['level'] == 1){
@@ -21,7 +27,7 @@ if(isset($_GET['pesan'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login | Klinik Atrtha Medika Malang</title>
+	<title>Login | Klinik Artha Medika Malang</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="image/logo.png">

@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+$now = date("Y-m-d");
+if ($_SESSION['date'] < $now){
+  $_SESSION['no_antrian'] = 1;
+  $_SESSION['date'] = $now;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +15,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Klinik Atrtha Medika Malang</title>
+  <title>Klinik Artha Medika Malang</title>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
@@ -70,14 +77,10 @@ session_start();
         <div class="form-group">
          <?php
          include '../process/conSQL.php';
-         $no = 1;
-         $month = date('m');
-         $day = date('d');
-         $year = date('Y');
-         $today = $year . '-' . $month . '-' . $day;
-         echo "<label><h5>Nomor Antrian Anda : ".$no++."</h5></label>";  
+         $no = $_SESSION['no_antrian'];
+         echo "<label><h5>Nomor Antrian Anda : ".$no."</h5></label>";  
          ?>     
-         <input type="hidden" name="nomor" id="nomor" value="1">
+         <input type="hidden" name="nomor" id="nomor" value="<?php echo $no; ?>">
        </div>
        <div class="form-group">
         <input type="hidden" name="id_antrian" id="id_antrian" value="<?php echo $id_antrian; ?>">
