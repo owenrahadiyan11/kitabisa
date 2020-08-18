@@ -149,7 +149,7 @@ session_start();
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                       <h1 class="h3 mb-0 text-gray-800">Data Dokter</h1>
-                      <a href="reg-dokter.php" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Registrasi Dokter</a>
+                      <a href="register.php" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Registrasi Dokter</a>
                     </div>
 
                     <!-- DataTales Example -->

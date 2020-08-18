@@ -129,6 +129,7 @@ session_start();
                     <thead>
                       <tr>
                         <th>No</th>
+                        <th>No. Rekmed</th>
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Jenis Kelamin</th>
@@ -150,6 +151,7 @@ session_start();
                        while($data = mysqli_fetch_assoc($res)){ 
                         echo "<tr>";
                         echo "<td>".$no++.".</td>";
+                         echo "<td> A".$data['id_pasien']."</td>";
                         echo "<td>".$data['nama']."</td>";
                         echo "<td>".$data['tgl_lahir']."</td>";
                         echo "<td>".$data['jk']."</td>";

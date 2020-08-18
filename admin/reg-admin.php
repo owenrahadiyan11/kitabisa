@@ -159,8 +159,13 @@ session_start();
                           <div class="col-md-6">
                             <div class="form-group">
                               <input type="hidden" name="id_admin" value="<?php echo $id_admin; ?>">
-                              <label class="bmd-label-floating">Nama</label>
-                              <input type="text" class="form-control" name="nama" id="nama" required="required">
+                               <?php
+                              include '../process/conSQL.php';
+                              $nama_lengkap = $_GET['nama_lengkap'];
+                              ?>
+                              <label class="bmd-label-floating">Nama Admin</label>
+                              <input type="text" class="form-control" value="<?php echo $nama_lengkap?>" readonly>
+                              <input type="hidden" name="nama" id="nama" value="<?php echo $nama_lengkap; ?>">
                             </div>
                           </div>
 
@@ -194,7 +199,6 @@ session_start();
                         </div> 
 
                         <button type="submit" class="btn btn-outline-info ">Simpan</button>
-                        <a href="dataadmin.php" class="btn btn-outline-info">Kembali</a>
                         <div class="clearfix"></div>
                       </form>
                     </div>

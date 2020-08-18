@@ -224,7 +224,9 @@ session_start();
                         <th>No</th>
                         <th>Nama Pasien</th>
                         <th>Nomor Antrian</th>
+                        <th>Dokter</th>
                         <th>Tanggal</th>
+                        <th>Waktu Pelayanan</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -247,7 +249,13 @@ session_start();
                         $dataNm = mysqli_fetch_assoc($result);
                         echo "<td>".$dataNm['nama']."</td>";
                         echo "<td>".$data['nomor']."</td>";
+                        $nama_dokter = $data['id_dokter'];
+                        $dok = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter";
+                        $result = mysqli_query($con, $dok);
+                        $dataD = mysqli_fetch_assoc($result);
+                        echo "<td>".$dataD['nama']."</td>";
                         echo "<td>".$data['tgl']."</td>";
+                        echo "<td>".$data['pukul']."</td>";
                         echo "<td>".$data['status']."</td>";
                         echo "<td class='td-actions text-center'>";
                         echo "<a class='btn btn-warning btn-sm' rel='tooltip' href='edit-rekammedis.php?id_pasien=".$data["id_pasien"]."&id_antrian=".$data["id_antrian"]."'><i class='fas fa-edit'></i></a>";

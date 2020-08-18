@@ -4,8 +4,8 @@ session_start();
 if (!isset($_SESSION['date']) && !isset($_SESSION['no_antrian'])) {
 	$_SESSION['date'] = date("Y-m-d");
 	$_SESSION['no_antrian'] = 1;
+	
 }
-
 if(isset($_SESSION['nama_lengkap']) and isset($_SESSION['status']) and isset($_SESSION['level'])){
 	if($_SESSION['status'] == 'Aktif'){
 		if($_SESSION['level'] == 1){
@@ -23,7 +23,6 @@ if(isset($_GET['pesan'])){
 	$mess="";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,11 +69,10 @@ if(isset($_GET['pesan'])){
 							Login
 						</button>
 						<span class="login100-form-title ">
-							<?php echo "<p style='color:red;'>" . $mess . "</p>";?>
+							<?php echo '<p style="color:red;">' . $mess . "</p>";?>
 						</span>
 						<b><p></p><b>
 						</div>
-
 						<div class="text-center w-full p-t-25 p-b-130"></div>
 					</form>
 				</div>

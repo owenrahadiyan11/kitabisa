@@ -260,7 +260,9 @@ session_start();
                                     <th>No</th>
                                     <th>Nama Pasien</th>
                                     <th>Nomor Antrian</th>
+                                    <th>Dokter</th>
                                     <th>Tanggal</th>
+                                    <th>Waktu Pelayanan</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -270,7 +272,7 @@ session_start();
                                   include '../process/conSQL.php';
                                   $no = 1;
                                   $tgl =date("Y-m-d");
-                                  $query = "SELECT * FROM antrian WHERE tgl='$tgl' AND status ='Belum dilayani'";
+                                  $query = "SELECT * FROM antrian WHERE tgl='$tgl' AND status ='Belum dilayani' ORDER BY nomor asc";
                                   $res = mysqli_query($con, $query);
                                   if(mysqli_num_rows($res) == 0){
                                     echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
@@ -284,7 +286,13 @@ session_start();
                                     $dataNm = mysqli_fetch_assoc($result);
                                     echo "<td>".$dataNm['nama']."</td>";
                                     echo "<td>".$data['nomor']."</td>";
+                                    $nama_dokter = $data['id_dokter'];
+                                    $dok = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter";
+                                    $result = mysqli_query($con, $dok);
+                                    $dataD = mysqli_fetch_assoc($result);
+                                    echo "<td>".$dataD['nama']."</td>";
                                     echo "<td>".$data['tgl']."</td>";
+                                    echo "<td>".$data['pukul']."</td>";
                                     echo "<td>".$data['status']."</td>";
                                     echo "<td class='td-actions text-center'>";
                                     echo "<a class='btn btn-warning btn-sm' rel='tooltip' href='edit-antrian.php?id_antrian=".$data["id_antrian"]."'><i class='fas fa-edit'></i></a>";

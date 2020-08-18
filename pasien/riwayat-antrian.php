@@ -35,10 +35,10 @@ session_start();
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="informasi-pasien.php">Jadwal Dokter</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="riwayat-antrian.php">Riwayat Antrian</a>
             </li>
             <li class="nav-item">
@@ -68,55 +68,55 @@ session_start();
    </div>
    <div class="container">
     <div class="col-sm-12">
-      <h2>Jadwal Praktek Dokter</h2>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama Dokter</th>
-                <th>Hari</th>
-                <th>Tanggal</th>
-                <th>Jam Awal</th>
-                <th>Jam Akhir</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              include '../process/conSQL.php';
-              $no = 1;
-              $query = "SELECT * FROM jadwal ORDER BY tgl asc";
-              $res = mysqli_query($con, $query);
-              if(mysqli_num_rows($res) == 0){
-                echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
-              }else{  
-               while($data = mysqli_fetch_assoc($res)){ 
-                echo "<tr>";
-                echo "<td>".$no++.".</td>";
-                $nama_dokter = $data['id_dokter'];
-                $nm = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter  ";
-                $result = mysqli_query($con, $nm);
-                $dataNm = mysqli_fetch_assoc($result);
-                echo "<td>".$dataNm['nama']."</td>";
-                echo "<td>".$data['hari']."</td>";
-                echo "<td>".$data['tgl']."</td>";
-                echo "<td>".$data['jam_awal']."</td>";
-                echo '<td>'.$data['jam_akhir'].'</td>';
-                echo "</td>";
-                echo '</tr>';
-                echo "";
-              }
-            }
-            ?>
-          </tbody>
-        </table>
+      <h2>Riwayat Antrian Online</h2>
+      <!-- Cards container -->
+      <div class="container text-center">
+        <div class="row">
+          <?php
+          include '../process/conSQL.php';
+          $nama = $_SESSION['nama_lengkap'];
+          $query1 = "SELECT * FROM pasien WHERE nama = '$nama'";
+          $result = mysqli_query($con, $query1);
+          $dat = mysqli_fetch_assoc($result);
+          $id_pasien = $dat['id_pasien'];
+          $query = "SELECT * FROM antrian WHERE id_pasien = ' $id_pasien' ORDER BY tgl desc";
+          $res = mysqli_query($con, $query);
+          if(mysqli_num_rows($res) == 0){ 
+          }else{  
+           while($data = mysqli_fetch_assoc($res)){ 
+            echo '<div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">';
+            echo '<div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">';
+            echo '<div class="pt-4 pb-3" style="letter-spacing: 2px">';
+            echo '<h4>Nomor Antrian</h4>';
+            echo '</div>';
+            echo '<div class="pricing-price pb-1 text-primary color-primary-text ">';
+            echo '<h1 style="font-weight: 1000; font-size: 3.5em;">';
+            echo '<span style="   font-size: 20px;"></span>'.$data['nomor'].'</h1>';
+            echo '</div>';
+            echo '<div class="pricing-description">';
+            echo '<ul class="list-unstyled mt-3 mb-4">';
+            echo '<li class="pl-3 pr-3">Tanggal : <b>'.$data['tgl'].'</b></li>';
+            $nama_dokter = $data['id_dokter'];
+            $nm = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter  ";
+            $result = mysqli_query($con, $nm);
+            $dataNm = mysqli_fetch_assoc($result);
+            echo '<li class="pl-3 pr-3">Dokter : <b>'.$dataNm['nama'].'</b></li>';
+            echo '<li class="pl-3 pr-3">Pukul : <b>'.$data['pukul'].' WIB</b></li>';
+            echo '</ul>';
+            echo '</div>';
+            echo '<div class="pricing-button pb-1">';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+        }
+        ?>
       </div>
     </div>
   </div>
 </div>
-</div>   
+
+
 <footer class="sticky-footer bg-black">
   <div class="container my-auto ">
     <div class="copyright text-center my-auto text-white small ">

@@ -215,11 +215,18 @@ session_start();
                         <div class="col-md-6">
                           <div class="form-group">
                             <label class="bmd-label-floating">Spesialis</label>
-                            <input type="text" class="form-control" name="spesialis" id="spesialis" required="required" value="<?php echo $data['spesialis']; ?>">
+                           <select class="form-control" id="spesialis" name="spesialis" >
+                                <option value="Umum" <?php if($data['spesialis'] == 'Umum'){ echo 'selected'; } ?>>Umum</option>
+                                <option value="Gigi" <?php if($data['spesialis'] == 'Gigi'){ echo 'selected'; } ?>>Gigi</option>
+                                <option value="Penyakit Dalam" <?php if($data['spesialis'] == 'Penyakit Dalam'){ echo 'selected'; } ?>>Penyakit Dalam</option>
+                                <option value="Anak" <?php if($data['spesialis'] == 'Anak'){ echo 'selected'; } ?>>Anak</option>
+                                <option value="Kulit dan Kelamin" <?php if($data['spesialis'] == 'Kulit dan Kelamin'){ echo 'selected'; } ?>>Kulit dan Kelamin</option>
+                                <option value="Mata" <?php if($data['spesialis'] == 'Mata'){ echo 'selected'; } ?>>Mata</option>
+                                <option value="THT" <?php if($data['spesialis'] == 'THT'){ echo 'selected'; } ?>>THT</option>
+                              </select>
                           </div>
                         </div> 
                       </div> 
-
                       <button type="submit" class="btn btn-outline-info ">Simpan</button>
                       <a href="datadokter.php" class="btn btn-outline-info">Kembali</a>
                       <div class="clearfix"></div>

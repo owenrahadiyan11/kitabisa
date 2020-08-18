@@ -176,9 +176,16 @@ session_start();
                           
                           <div class="col-md-6">
                             <div class="form-group">
+                              <?php
+                              include '../process/conSQL.php';
+                              $id_dokter = $_GET['id_dokter'];
+                              $dok = "SELECT nama FROM dokter WHERE id_dokter = $id_dokter";
+                              $res = mysqli_query($con, $dok);
+                              $dataDok = mysqli_fetch_assoc($res);
+                              ?>
                               <label class="bmd-label-floating">Nama Dokter</label>
-                              <input type="text" class="form-control" readonly>
-                              <input type="hidden" name="id_dokter" value=" ">
+                              <input type="text" class="form-control" value="<?php echo $dataDok['nama']?>" readonly>
+                              <input type="hidden" name="id_dokter" id="id_dokter" value="<?php echo $id_dokter; ?>">
                             </div>
                           </div> 
                         </div>
@@ -252,7 +259,7 @@ session_start();
                       </div> 
 
                       <button type="submit" class="btn btn-outline-info ">Simpan</button>
-                      <a href="dataadmin.php" class="btn btn-outline-info">Kembali</a>
+                      <a href="datapasien.php" class="btn btn-outline-info">Kembali</a>
                       <div class="clearfix"></div>
                     </form>
                   </div>

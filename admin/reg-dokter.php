@@ -158,8 +158,13 @@ session_start();
                           <div class="col-md-12">
                             <div class="form-group">
                               <input type="hidden" name="id_dokter" value="<?php echo $id_dokter; ?>">
-                              <label class="bmd-label-floating">Nama</label>
-                              <input type="text" class="form-control" name="nama" id="nama" required="required">
+                               <?php
+                              include '../process/conSQL.php';
+                              $nama_lengkap = $_GET['nama_lengkap'];
+                              ?>
+                              <label class="bmd-label-floating">Nama Dokter</label>
+                              <input type="text" class="form-control" value="<?php echo $nama_lengkap?>" readonly>
+                              <input type="hidden" name="nama" id="nama" value="<?php echo $nama_lengkap; ?>">
                             </div>
                           </div>
                         </div>
@@ -203,13 +208,20 @@ session_start();
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="bmd-label-floating">Spesialis</label>
-                              <input type="text" class="form-control" name="spesialis" id="spesialis" required="required">
+                              <select class="form-control" id="spesialis" name="spesialis" >
+                                <option>Umum</option>
+                                <option>Gigi</option>
+                                <option>Penyakit Dalam</option>
+                                <option>Anak</option>
+                                <option>Kulit dan Kelamin</option>
+                                <option>Mata</option>
+                                <option>THT</option>
+                              </select>
                             </div>
                           </div> 
                         </div> 
 
                         <button type="submit" class="btn btn-outline-info ">Simpan</button>
-                        <a href="datadokter.php" class="btn btn-outline-info">Kembali</a>
                         <div class="clearfix"></div>
                       </form>
                     </div>

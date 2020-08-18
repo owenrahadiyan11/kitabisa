@@ -149,7 +149,7 @@ session_start();
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                       <h1 class="h3 mb-0 text-gray-800">Data Pasien</h1>
-                      <a href="reg-pasien.php" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Registrasi Pasien</a>
+                      <a href="register.php" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Registrasi Pasien</a>
                     </div>
 
                     <!-- DataTales Example -->
@@ -163,6 +163,7 @@ session_start();
                             <thead>
                               <tr>
                                 <th>No</th>
+                                <th>No. Rekmed</th>
                                 <th>Nama</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Jenis Kelamin</th>
@@ -185,6 +186,7 @@ session_start();
                                while($data = mysqli_fetch_assoc($res)){ 
                                 echo "<tr>";
                                 echo "<td>".$no++.".</td>";
+                                echo "<td> A".$data['id_pasien']."</td>";
                                 echo "<td>".$data['nama']."</td>";
                                 echo "<td>".$data['tgl_lahir']."</td>";
                                 echo "<td>".$data['jk']."</td>";

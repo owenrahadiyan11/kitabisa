@@ -2,7 +2,7 @@
 $dbUrl = "localhost";
 $dbUser = "root";
 $dbPass = "";
-$dbName = "klinik";
+$dbName = "klinik-am";
 
 $con = mysqli_connect($dbUrl,$dbUser,$dbPass,$dbName);
 if(!$con){

@@ -18,7 +18,7 @@ session_start();
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <!-- Custom styles for this page -->
-    <link rel="icon" type="image/png" href="../image/logo.png">
+  <link rel="icon" type="image/png" href="../image/logo.png">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
@@ -112,7 +112,6 @@ session_start();
                            echo '<div class="topbar-divider d-none d-sm-block"></div>';
                            echo "Pukul : <b>". $jam." "."</b>";
                            $a = date ("H");
-
                            ?>   
                          </a>
                        </li>         
@@ -148,7 +147,7 @@ session_start();
                   <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                      <h1 class="h3 mb-0 text-gray-800">Form Registrasi Data Admin</h1>
+                      <h1 class="h3 mb-0 text-gray-800">Form Registrasi Data Jadwal Dokter </h1>
                     </div>
 
                     <!-- DataTales Example -->
@@ -158,34 +157,34 @@ session_start();
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
-                              <input type="hidden" name="id_jadwal" value="<?php echo $id_jadwal; ?>">
+                              <!-- table 1 -->
+                              <input type="hidden" name="id_jadwal1" value="<?php echo $id_jadwal; ?>">
                               <label class="bmd-label-floating">Nama Dokter</label>
-                             <select class="form-control" id="id_dokter" name="id_dokter" class="form-control">
-                              <?php
-                              include '../process/conSQL.php';
-                              $query = "SELECT * from dokter";
-                              $res= mysqli_query($con, $query);
-                              if(mysqli_num_rows($res) > 0){
-                                while($row = mysqli_fetch_assoc($res)){
-                                  $id_dokter= $row['id_dokter'];
-                                  $nama = $row['nama'];
-                                  echo "<option value=$id_dokter>$nama</option>";
+                              <select class="form-control" id="id_dokter" name="id_dokter" class="form-control">
+                                <?php
+                                include '../process/conSQL.php';
+                                $query = "SELECT * from dokter";
+                                $res= mysqli_query($con, $query);
+                                if(mysqli_num_rows($res) > 0){
+                                  while($row = mysqli_fetch_assoc($res)){
+                                    $id_dokter= $row['id_dokter'];
+                                    $nama = $row['nama'];
+                                    echo "<option value=$id_dokter>$nama</option>";
+                                  }
+                                }else{
+                                  echo "<option>Tidak ditemukan satuan</option>";
                                 }
-                              }else{
-                                echo "<option>Tidak ditemukan satuan</option>";
-                              }
-                              mysqli_close($con);
-                              ?>
-                            </select>
+                                mysqli_close($con);
+                                ?>
+                              </select>
                             </div>
                           </div>
                         </div>
-
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">Hari</label>
-                              <select class="form-control" id="hari" name="hari" >
+                              <select class="form-control" id="hari1" name="hari1" >
                                 <option>Senin</option>
                                 <option>Selasa</option>
                                 <option>Rabu</option>
@@ -198,14 +197,84 @@ session_start();
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
+                              <label class="bmd-label-floating">Tanggal Praktik</label>
+                              <input type="date" class="form-control" name="tgl1" id="tgl1" required="required">
+                            </div>
+                          </div> 
+                          <div class="col-md-3">
+                            <div class="form-group">
                               <label class="bmd-label-floating">Jam Awal</label>
-                              <input type="time" class="form-control" name="jam_awal" id="jam_awal" required="required">
+                              <input type="time" class="form-control" name="jam_awal1" id="jam_awal1" required="required">
                             </div>
                           </div> 
                           <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">Jam Akhir</label>
-                              <input type="time" class="form-control" name="jam_akhir" id="jam_akhir" required="required">
+                              <input type="time" class="form-control" name="jam_akhir1" id="jam_akhir1" required="required">
+                            </div>
+                          </div> 
+                        </div>
+                        <!-- table 2 -->
+                        <input type="hidden" name="id_jadwal2" value="<?php echo $id_jadwal; ?>">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <select class="form-control" id="hari2" name="hari2" >
+                                <option>Senin</option>
+                                <option>Selasa</option>
+                                <option>Rabu</option>
+                                <option>Kamis</option>
+                                <option>Jumat</option>
+                                <option>Sabtu</option>
+                                <option>Minggu</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="date" class="form-control" name="tgl2" id="tgl2" required="required">
+                            </div>
+                          </div> 
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="time" class="form-control" name="jam_awal2" id="jam_awal2" required="required">
+                            </div>
+                          </div> 
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="time" class="form-control" name="jam_akhir2" id="jam_akhir2" required="required">
+                            </div>
+                          </div> 
+                        </div>
+                        <!-- table 3 -->
+                        <input type="hidden" name="id_jadwal3" value="<?php echo $id_jadwal; ?>">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <select class="form-control" id="hari3" name="hari3" >
+                                <option>Senin</option>
+                                <option>Selasa</option>
+                                <option>Rabu</option>
+                                <option>Kamis</option>
+                                <option>Jumat</option>
+                                <option>Sabtu</option>
+                                <option>Minggu</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="date" class="form-control" name="tgl3" id="tgl3" required="required">
+                            </div>
+                          </div> 
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="time" class="form-control" name="jam_awal3" id="jam_awal3" required="required">
+                            </div>
+                          </div> 
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="time" class="form-control" name="jam_akhir3" id="jam_akhir3" required="required">
                             </div>
                           </div> 
                         </div>
@@ -251,7 +320,7 @@ session_start();
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                   <a class="btn btn-info" href="../logout.php">Logout</a>
+                  <a class="btn btn-info" href="../logout.php">Logout</a>
                 </div>
               </div>
             </div>

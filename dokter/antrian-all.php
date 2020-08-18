@@ -78,7 +78,6 @@ session_start();
                    echo '<div class="topbar-divider d-none d-sm-block"></div>';
                    echo "Pukul : <b>". $jam." "."</b>";
                    $a = date ("H");
-
                    ?>   
                  </a>
                </li>         
@@ -227,7 +226,9 @@ session_start();
                             <th>No</th>
                             <th>Nama Pasien</th>
                             <th>Nomor Antrian</th>
+                            <th>Dokter</th>
                             <th>Tanggal</th>
+                            <th>Waktu Pelayanan</th>
                             <th>Status</th>
                           </tr>
                         </thead>
@@ -249,7 +250,13 @@ session_start();
                             $dataNm = mysqli_fetch_assoc($result);
                             echo "<td>".$dataNm['nama']."</td>";
                             echo "<td>".$data['nomor']."</td>";
+                            $nama_dokter = $data['id_dokter'];
+                            $dok = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter";
+                            $result = mysqli_query($con, $dok);
+                            $dataD = mysqli_fetch_assoc($result);
+                            echo "<td>".$dataD['nama']."</td>";
                             echo "<td>".$data['tgl']."</td>";
+                            echo "<td>".$data['pukul']."</td>";
                             echo "<td>".$data['status']."</td>";
                             echo '</tr>';
                           }

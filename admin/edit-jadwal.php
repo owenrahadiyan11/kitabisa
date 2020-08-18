@@ -201,7 +201,7 @@ session_start();
                         </div>
 
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">Hari</label>
                               <select class="form-control" id="hari" name="hari" >
@@ -217,6 +217,12 @@ session_start();
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
+                              <label class="bmd-label-floating">Tanggal Praktik</label>
+                              <input type="date" class="form-control" name="tgl" id="tgl" required="required" value="<?php echo $data['tgl']; ?>">
+                            </div>
+                          </div> 
+                          <div class="col-md-3">
+                            <div class="form-group">
                               <label class="bmd-label-floating">Jam Awal</label>
                               <input type="time" class="form-control" name="jam_awal" id="jam_awal" required="required" value="<?php echo $data['jam_awal']; ?>">
                             </div>
@@ -228,6 +234,8 @@ session_start();
                             </div>
                           </div> 
                         </div>
+
+                        
 
                         <button type="submit" class="btn btn-outline-info ">Simpan</button>
                         <a href="jadwal.php" class="btn btn-outline-info">Kembali</a>

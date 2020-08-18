@@ -169,22 +169,22 @@ session_start();
                                   echo $data['tgl'];
                                   ?>
                                 </div>
-                                </div>
-                                <div class="col-auto">
-                                  <a href="antrian-today.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
-                                </div>
+                              </div>
+                              <div class="col-auto">
+                                <a href="antrian-today.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!-- Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                          <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                              <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pasien yang telah dilayani</div>
-                                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      </div>
+                      <!-- Card Example -->
+                      <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                          <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                              <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pasien yang telah dilayani</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
                                   <?php 
                                   include '../process/conSQL.php';
                                   $query = "SELECT COUNT(*) AS data FROM antrian WHERE tgl = CURDATE() AND status='Sudah dilayani'";
@@ -192,23 +192,23 @@ session_start();
                                   $data = mysqli_fetch_assoc($result);
                                   echo $data['data'];
                                   ?>
-                                  </div>
                                 </div>
-                                <div class="col-auto">
-                                  <a href="antrian-done.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
-                                </div>
+                              </div>
+                              <div class="col-auto">
+                                <a href="antrian-done.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!-- Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                          <div class="card border-left-danger shadow h-100 py-2">
-                            <div class="card-body">
-                              <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                  <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pasien yang belum dilayani</div>
-                                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      </div>
+                      <!-- Card Example -->
+                      <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-danger shadow h-100 py-2">
+                          <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                              <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pasien yang belum dilayani</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
                                   <?php 
                                   include '../process/conSQL.php';
                                   $query = "SELECT COUNT(*) AS data FROM antrian WHERE tgl = CURDATE() AND status='Belum dilayani'";
@@ -216,23 +216,23 @@ session_start();
                                   $data = mysqli_fetch_assoc($result);
                                   echo $data['data'];
                                   ?>  
-                                  </div>
                                 </div>
-                                <div class="col-auto">
-                                  <a href="antrian-no.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
-                                </div>
+                              </div>
+                              <div class="col-auto">
+                                <a href="antrian-no.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!--Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-6">
-                          <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                              <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Semua Pasien</div>
-                                  <div class="h5 mb-0 font-weight-bold text-gray-800"> 
+                      </div>
+                      <!--Card Example -->
+                      <div class="col-xl-3 col-md-6 mb-6">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                          <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                              <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Semua Pasien</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"> 
                                   <?php 
                                   include '../process/conSQL.php';
                                   $query = "SELECT COUNT(*) AS id_antrian FROM antrian";
@@ -263,7 +263,9 @@ session_start();
                                   <th>No</th>
                                   <th>Nama Pasien</th>
                                   <th>Nomor Antrian</th>
+                                  <th>Dokter</th>
                                   <th>Tanggal</th>
+                                  <th>Waktu Pelayanan</th>
                                   <th>Status</th>
                                   <th>Action</th>
                                 </tr>
@@ -286,7 +288,13 @@ session_start();
                                   $dataNm = mysqli_fetch_assoc($result);
                                   echo "<td>".$dataNm['nama']."</td>";
                                   echo "<td>".$data['nomor']."</td>";
+                                  $nama_dokter = $data['id_dokter'];
+                                  $dok = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter";
+                                  $result = mysqli_query($con, $dok);
+                                  $dataD = mysqli_fetch_assoc($result);
+                                  echo "<td>".$dataD['nama']."</td>";
                                   echo "<td>".$data['tgl']."</td>";
+                                  echo "<td>".$data['pukul']."</td>";
                                   echo "<td>".$data['status']."</td>";
                                   echo "<td class='td-actions text-center'>";
                                   echo "<a class='btn btn-danger btn-sm' rel='tooltip' href='hapus-antrian.php?id_antrian=".$data["id_antrian"]."'><i class='fas fa-trash'></i></a>";

@@ -172,6 +172,8 @@ session_start();
                               <label class="bmd-label-floating">Antrian Nomor Ke :</label>
                               <input type="hidden" name="nomor" id="nomor" value="<?php echo $data['nomor']; ?>">
                               <h2><b><?php echo  $data['nomor']; ?></b></h2>
+                              <h5><b><?php echo  $data['pukul']; ?></b></h2>
+                              <input type="hidden" name="pukul" value="<?php echo $data['pukul']; ?>">
                             </div>
                           </div>   
                           <div class="col-md-10">
@@ -196,16 +198,30 @@ session_start();
                             <div class="form-group">
                               <label class="bmd-label-floating">Tanggal</label>
                               <input type="date" class="form-control" name="tgl" id="tgl" value="<?php echo $data['tgl']; ?>" readonly>
+                              
                             </div>
                           </div> 
-                          <div class="col-md-8">
+                          <div class="col-md-5">
                             <div class="form-group">
                               <label class="bmd-label-floating">Status Pelayanan</label>
                               <select class="form-control" id="status" name="status" >
                                 <option value="Sudah dilayani" <?php if($data['status'] == 'Sudah dilayani'){ echo 'selected'; } ?>>Sudah dilayani</option>
                                 <option value="Belum dilayani" <?php if($data['status'] == 'Belum dilayani'){ echo 'selected'; } ?>>Belum dilayani</option>
-                                
                               </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Dokter</label>
+                              <?php
+                              include '../process/conSQL.php';
+                              $id_dokter = $data['id_dokter'];
+                              $dok = "SELECT nama FROM dokter WHERE id_dokter = $id_dokter ";
+                              $result = mysqli_query($con, $dok);
+                              $dataDok = mysqli_fetch_assoc($result);
+                              ?>
+                              <input type="text" class="form-control" name="id_dokter" id="id_dokter" value="<?php echo $dataDok['nama']; ?>">
+                              <input type="hidden" name="id_dokter" value="<?php echo $id_dokter; ?>">
                             </div>
                           </div>                         
                         </div>

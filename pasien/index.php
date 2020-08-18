@@ -30,13 +30,16 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#"> 
+            <a class="nav-link" href=""> 
               <?php
               if(isset($_SESSION['nama_lengkap']))
               {
                 echo " " .$_SESSION["nama_lengkap"].'<br/>';
               }                  
               ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="informasi-pasien.php">Informasi</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>

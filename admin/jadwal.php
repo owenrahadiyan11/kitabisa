@@ -165,6 +165,7 @@ session_start();
                                 <th>No</th>
                                 <th>Nama Dokter</th>
                                 <th>Hari</th>
+                                <th>Tanggal</th>
                                 <th>Jam Awal</th>
                                 <th>Jam Akhir</th>
                                 <th>Action</th>
@@ -174,7 +175,7 @@ session_start();
                               <?php
                               include '../process/conSQL.php';
                               $no = 1;
-                              $query = "SELECT * FROM jadwal ORDER BY id_dokter asc";
+                              $query = "SELECT * FROM jadwal ORDER BY tgl asc";
                               $res = mysqli_query($con, $query);
                               if(mysqli_num_rows($res) == 0){
                                 echo '<tr><td colspan="10">Tidak ada data!</td></tr>';
@@ -188,6 +189,7 @@ session_start();
                                 $dataNm = mysqli_fetch_assoc($result);
                                 echo "<td>".$dataNm['nama']."</td>";
                                 echo "<td>".$data['hari']."</td>";
+                                echo "<td>".$data['tgl']."</td>";
                                 echo "<td>".$data['jam_awal']."</td>";
                                 echo '<td>'.$data['jam_akhir'].'</td>';
                                 echo "<td class='td-actions text-center'>";

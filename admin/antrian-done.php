@@ -160,13 +160,13 @@ session_start();
                               <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pasien hari ini</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php 
-                                  include '../process/conSQL.php';
-                                  $tgl    =date("Y-m-d");
-                                  $query = "SELECT COUNT(*) AS tgl FROM antrian WHERE tgl='$tgl'";
-                                  $result = mysqli_query($con, $query);
-                                  $data = mysqli_fetch_assoc($result);
-                                  echo $data['tgl'];
-                                  ?></div>
+                                include '../process/conSQL.php';
+                                $tgl    =date("Y-m-d");
+                                $query = "SELECT COUNT(*) AS tgl FROM antrian WHERE tgl='$tgl'";
+                                $result = mysqli_query($con, $query);
+                                $data = mysqli_fetch_assoc($result);
+                                echo $data['tgl'];
+                                ?></div>
                               </div>
                               <div class="col-auto">
                                 <a href="antrian-today.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
@@ -207,7 +207,7 @@ session_start();
                               <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pasien yang belum dilayani</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php 
+                                  <?php 
                                   include '../process/conSQL.php';
                                   $query = "SELECT COUNT(*) AS data FROM antrian WHERE tgl = CURDATE() AND status='Belum dilayani'";
                                   $result = mysqli_query($con, $query);
@@ -231,12 +231,12 @@ session_start();
                               <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Semua Pasien</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php 
-                                  include '../process/conSQL.php';
-                                  $query = "SELECT COUNT(*) AS id_antrian FROM antrian";
-                                  $result = mysqli_query($con, $query);
-                                  $data = mysqli_fetch_assoc($result);
-                                  echo $data['id_antrian'];
-                                  ?></div>
+                                include '../process/conSQL.php';
+                                $query = "SELECT COUNT(*) AS id_antrian FROM antrian";
+                                $result = mysqli_query($con, $query);
+                                $data = mysqli_fetch_assoc($result);
+                                echo $data['id_antrian'];
+                                ?></div>
                               </div>
                               <div class="col-auto">
                                 <a href="antrian-all.php" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"> Tampilkan</a>
@@ -260,12 +260,14 @@ session_start();
                                 <th>No</th>
                                 <th>Nama Pasien</th>
                                 <th>Nomor Antrian</th>
+                                <th>Dokter</th>
                                 <th>Tanggal</th>
+                                <th>Waktu Pelayanan</th>
                                 <th>Status</th>
                               </tr>
                             </thead>
                             <tbody>
-                            <?php
+                              <?php
                               include '../process/conSQL.php';
                               $no = 1;
                               $tgl =date("Y-m-d");
@@ -283,7 +285,13 @@ session_start();
                                 $dataNm = mysqli_fetch_assoc($result);
                                 echo "<td>".$dataNm['nama']."</td>";
                                 echo "<td>".$data['nomor']."</td>";
+                                $nama_dokter = $data['id_dokter'];
+                                $dok = "SELECT nama FROM dokter WHERE id_dokter = $nama_dokter";
+                                $result = mysqli_query($con, $dok);
+                                $dataD = mysqli_fetch_assoc($result);
+                                echo "<td>".$dataD['nama']."</td>";
                                 echo "<td>".$data['tgl']."</td>";
+                                echo "<td>".$data['pukul']."</td>";
                                 echo "<td>".$data['status']."</td>";
                                 echo '</tr>';
                               }
@@ -298,52 +306,52 @@ session_start();
                 <!-- /.container-fluid -->
               </div>
               <!-- End of Main Content -->
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                      <div class="container my-auto ">
-                        <div class="copyright text-center my-auto ">
-                          <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
-                        </div>
-                      </div>
-                    </footer>
-                    <!-- End of Footer -->
-                  </div>
-                  <!-- End of Content Wrapper -->
-                </div>
-                <!-- End of Page Wrapper -->
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                  <i class="fas fa-angle-up"></i>
-                </a>
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-info" href="../logout.php">Logout</a>
-                      </div>
-                    </div>
+              <!-- Footer -->
+              <footer class="sticky-footer bg-white">
+                <div class="container my-auto ">
+                  <div class="copyright text-center my-auto ">
+                    <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
                   </div>
                 </div>
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
-                <!-- Page level plugins -->
-                <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-                <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-                <!-- Page level custom scripts -->
-                <script src="js/demo/datatables-demo.js"></script>
-              </body>
-              </html>
+              </footer>
+              <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+          </div>
+          <!-- End of Page Wrapper -->
+          <!-- Scroll to Top Button-->
+          <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+          </a>
+          <!-- Logout Modal-->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-info" href="../logout.php">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Bootstrap core JavaScript-->
+          <script src="vendor/jquery/jquery.min.js"></script>
+          <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- Core plugin JavaScript-->
+          <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+          <!-- Custom scripts for all pages-->
+          <script src="js/sb-admin-2.min.js"></script>
+          <!-- Page level plugins -->
+          <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+          <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+          <!-- Page level custom scripts -->
+          <script src="js/demo/datatables-demo.js"></script>
+        </body>
+        </html>
