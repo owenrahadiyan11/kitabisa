@@ -281,28 +281,38 @@ session_start();
                 </div> 
               </div> 
 
-              <button type="submit" class="btn btn-outline-info ">Simpan</button>
-              <a href="antrian-done.php" class="btn btn-outline-info">Kembali</a>
-              <div class="clearfix"></div>
-            </form>
-          </div>
-        </div>
+              <div class="row">
+               <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Tampilan Image</label><br>
+                  <input type="hidden" name="gambar" value="<?php echo $data['nama_file']?>">
+                  <img src="../admin/process/images/<?php echo $data['nama_file']?>" width=50% min-height=200px;>
+                </div>
+              </div> 
+            </div> 
 
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- End of Main Content -->
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-      <div class="container my-auto ">
-        <div class="copyright text-center my-auto ">
-          <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
+            <button type="submit"  class="btn btn-outline-info ">Simpan</button>
+            <a href="antrian-done.php" class="btn btn-outline-info">Kembali</a>
+            <div class="clearfix"></div>
+          </form>
         </div>
       </div>
-    </footer>
-    <!-- End of Footer -->
+
+    </div>
+    <!-- /.container-fluid -->
   </div>
-  <!-- End of Content Wrapper -->
+  <!-- End of Main Content -->
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto ">
+      <div class="copyright text-center my-auto ">
+        <span>Copyright &copy; Tim Penyusun Sistem Klinik Artha Medika</span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+</div>
+<!-- End of Content Wrapper -->
 </div>
 <!-- End of Page Wrapper -->
 <!-- Scroll to Top Button-->

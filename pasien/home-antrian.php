@@ -125,7 +125,7 @@ if ($_SESSION['date'] < $now){
              <div class="pricing-description">
               <ul class="list-unstyled mt-3 mb-4">
                 <li class="pl-3 pr-3">Dilayani oleh dokter</li>
-                <!-- <select class="form-control" id="id_dokter" name="id_dokter" class="form-control" style="text-align-last:center" > -->
+                <select class="form-control" id="id_dokter" name="id_dokter" class="form-control" style="text-align-last:center" >
                   <?php
                   include '../process/conSQL.php';
                   $month = date('m');
@@ -143,16 +143,15 @@ if ($_SESSION['date'] < $now){
                     $dataDok = mysqli_fetch_assoc($result); 
                     $id_dokter= $dataDok['id_dokter'];
                     $nama = $dataDok['nama'];
-                    // echo "<option value=$id_dokter>$nama</option>";
+                    echo "<option value=$id_dokter>$nama</option>";
                     echo '<li class="pl-3 pr-3"><b>'.$nama.'</b></li>';
                   }
                 }else{
-                  // echo "<option>Mohon maaf hari ini tidak ada dokter praktik</option>";
-                  echo '<li class="pl-3 pr-3">Mohon maaf hari ini tidak ada dokter praktik</li>';
+                  echo "<option>Mohon maaf hari ini tidak ada dokter praktik</option>";
                 }
                 mysqli_close($con);
                 ?>
-              <!-- </select> -->
+              </select>
 
               <?php
               include '../process/conSQL.php';

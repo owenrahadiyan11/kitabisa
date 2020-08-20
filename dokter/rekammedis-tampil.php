@@ -147,6 +147,7 @@ session_start();
                       <th>Objek</th>
                       <th>Diagnosa</th>
                       <th>Tindakan</th>
+                      <th>Images</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -180,6 +181,7 @@ session_start();
                       echo "<td>".$data['objek']."</td>";
                       echo '<td>'.$data['diagnosa'].'</td>';
                       echo "<td>".$data['tindakan']."</td>";
+                      echo "<td><img src='../admin/process/images/".$data['nama_file']."'width=100% min-height=200px; ></td>";
                       echo '</tr>';
                     }
                   }

@@ -180,6 +180,7 @@ session_start();
                               <th>Objek</th>
                               <th>Diagnosa</th>
                               <th>Tindakan</th>
+                              <th>Images</th>
                               <th>Action</th>
                             </tr>
                           </thead>
@@ -214,6 +215,7 @@ session_start();
                               echo "<td>".$data['objek']."</td>";
                               echo '<td>'.$data['diagnosa'].'</td>';
                               echo "<td>".$data['tindakan']."</td>";
+                              echo "<td><img src='process/images/".$data['nama_file']."'width=100% min-height=200px; ></td>";
                               echo "<td class='td-actions text-center'>";
                               echo "<a class='btn btn-danger btn-sm' rel='tooltip' href='hapus-rekammedis.php?id_medis=".$data["id_medis"]."'><i class='fas fa-trash'></i></a>";
                               echo '</tr>';

@@ -11,8 +11,10 @@ $gejala = $_POST["gejala"];
 $objek = $_POST["objek"];
 $diagnosa = $_POST["diagnosa"];
 $tindakan = $_POST["tindakan"];
+$gambar = $_POST["gambar"];
 
-$query = "UPDATE rekam_medis SET id_pasien = '$id_pasien' , id_dokter = '$id_dokter' , tgl ='$tgl',  tekanan_darah ='$tekanan_darah', tb='$tb', bb='$bb', gejala='$gejala', objek='$objek', diagnosa='$diagnosa', tindakan = '$tindakan' WHERE id_medis ='$id_medis'";
+
+$query = "UPDATE rekam_medis SET id_dokter = '$id_dokter', diagnosa='$diagnosa', tindakan = '$tindakan' WHERE id_medis ='$id_medis'";
 if(mysqli_query($con, $query)){
 	echo "<script>alert('Berhasil Update Data');window.location='../antrian-done.php'</script>";
 
@@ -20,3 +22,4 @@ if(mysqli_query($con, $query)){
 	echo "<script>alert('Gagal Tambah Data!');history.go(-1);</script>";
 }
 ?>
+

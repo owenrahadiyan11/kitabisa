@@ -257,6 +257,14 @@ session_start();
                           </div>
                         </div> 
                       </div> 
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Upload Image</label>
+                            <input type="file" class="form-control" name="gambar" required="required">
+                          </div>
+                        </div> 
+                      </div> 
 
                       <button type="submit" class="btn btn-outline-info ">Simpan</button>
                       <a href="datapasien.php" class="btn btn-outline-info">Kembali</a>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2020 at 06:36 AM
+-- Generation Time: Aug 20, 2020 at 04:39 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `jk` varchar(10) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `tlp` varchar(14) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id_admin`, `nama`, `jk`, `alamat`, `tlp`) VALUES
 (1, 'Rekha Azzah Dzakiyyah', 'Perempuan', 'Perumahan Patraland place B3-5', '082233944675'),
-(2, 'Ario Ramadani', 'Laki-Laki', 'Jl Cakalang 1 No 18', '089344567123');
+(2, 'Ario Ramadani', 'Laki-Laki', 'Jl Cakalang 1 No 18', '089344567123'),
+(3, 'Fira Aisha', 'Perempuan', 'Jl. Cakalang gg 12 No 99', '083456444787');
 
 -- --------------------------------------------------------
 
@@ -56,14 +57,25 @@ CREATE TABLE IF NOT EXISTS `antrian` (
   `tgl` date NOT NULL,
   `pukul` time NOT NULL,
   `status` varchar(15) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `antrian`
 --
 
 INSERT INTO `antrian` (`id_antrian`, `id_pasien`, `id_dokter`, `nomor`, `tgl`, `pukul`, `status`) VALUES
-(30, 7, 7, 1, '2020-07-13', '17:00:00', 'Sudah dilayani');
+(30, 7, 7, 1, '2020-07-13', '17:00:00', 'Sudah dilayani'),
+(31, 7, 7, 1, '2020-07-15', '17:00:00', 'Belum dilayani'),
+(32, 7, 8, 2, '2020-07-15', '17:20:00', 'Belum dilayani'),
+(33, 7, 7, 3, '2020-07-15', '17:40:00', 'Belum dilayani'),
+(34, 7, 8, 4, '2020-07-15', '18:00:00', 'Belum dilayani'),
+(35, 7, 8, 5, '2020-07-15', '18:20:00', 'Belum dilayani'),
+(36, 8, 9, 1, '2020-07-22', '17:00:00', 'Sudah dilayani'),
+(37, 8, 7, 2, '2020-07-22', '17:20:00', 'Sudah dilayani'),
+(38, 8, 8, 3, '2020-07-22', '17:40:00', 'Sudah dilayani'),
+(39, 10, 10, 1, '2020-07-28', '12:00:00', 'Sudah dilayani'),
+(40, 7, 10, 1, '2020-08-18', '11:00:00', 'Sudah dilayani'),
+(41, 7, 10, 1, '2020-08-19', '17:00:00', 'Sudah dilayani');
 
 -- --------------------------------------------------------
 
@@ -79,14 +91,17 @@ CREATE TABLE IF NOT EXISTS `dokter` (
   `alamat` varchar(50) NOT NULL,
   `tlp` varchar(14) NOT NULL,
   `spesialis` varchar(17) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dokter`
 --
 
 INSERT INTO `dokter` (`id_dokter`, `nama`, `tgl_lahir`, `jk`, `alamat`, `tlp`, `spesialis`) VALUES
-(7, 'dr. Arini Hapsari', '1988-07-14', 'Perempuan', 'Jl. Perum Mondoroko Kav 12', '081234555121', 'Umum');
+(7, 'dr. Arini Hapsari', '1988-07-14', 'Perempuan', 'Jl. Perum Mondoroko Kav 12', '081234555121', 'Umum'),
+(8, 'dr. Anwar Artha Dilla', '1982-07-23', 'Laki-Laki', 'Jl. Griya Santha Ruko 2', '085755474300', 'Penyakit Dalam'),
+(9, 'dr. Purbalin', '1988-12-24', 'Laki-Laki', 'Jl. Hiu', '0838488909', 'Penyakit Dalam'),
+(10, 'dr. Arief Maher', '1991-07-07', 'Laki-Laki', 'Jl. Ikan Tombro 19', '081888121000', 'Umum');
 
 -- --------------------------------------------------------
 
@@ -101,16 +116,24 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `tgl` date NOT NULL,
   `jam_awal` time NOT NULL,
   `jam_akhir` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jadwal`
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `id_dokter`, `hari`, `tgl`, `jam_awal`, `jam_akhir`) VALUES
-(28, 7, 'Senin', '2020-07-13', '17:00:00', '20:00:00'),
-(29, 7, 'Selasa', '2020-07-14', '17:00:00', '20:00:00'),
-(30, 7, 'Rabu', '2020-07-15', '17:00:00', '20:00:00');
+(29, 7, 'Rabu', '2020-07-22', '17:00:00', '20:00:00'),
+(31, 8, 'Rabu', '2020-07-22', '17:00:00', '18:00:00'),
+(34, 9, 'Senin', '2020-07-20', '15:00:00', '16:00:00'),
+(35, 9, 'Selasa', '2020-07-21', '12:00:00', '13:00:00'),
+(36, 9, 'Rabu', '2020-07-22', '15:00:00', '20:00:00'),
+(37, 10, 'Rabu', '2020-07-28', '12:00:00', '14:00:00'),
+(38, 10, 'Kamis', '2020-07-29', '12:30:00', '14:30:00'),
+(39, 10, 'Jumat', '2020-07-30', '09:00:00', '11:00:00'),
+(40, 10, 'Senin', '2020-08-17', '07:00:00', '10:00:00'),
+(41, 10, 'Selasa', '2020-08-18', '11:00:00', '12:00:00'),
+(42, 10, 'Rabu', '2020-08-19', '17:00:00', '20:00:00');
 
 -- --------------------------------------------------------
 
@@ -146,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `pasien` (
   `alamat` varchar(50) NOT NULL,
   `pekerjaan` varchar(20) NOT NULL,
   `tlp` varchar(14) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pasien`
@@ -159,7 +182,9 @@ INSERT INTO `pasien` (`id_pasien`, `nama`, `tgl_lahir`, `jk`, `alamat`, `pekerja
 (4, 'Nurus Laily A', '2000-04-08', 'Perempuan', 'jl ikan tombro timur rt 04 rw 04 kel tunjungsekar ', 'mahasiswa', '08816254736'),
 (5, 'Junita Ambarsari', '1990-06-16', 'Perempuan', 'Jl. Arimbi Timur 12', 'Pegawai Swasta', '083848826121'),
 (6, 'Mul', '1990-06-12', 'Laki-Laki', 'a', 'b', '124543'),
-(7, 'Sania Ika Putri', '1999-09-09', 'Perempuan', 'Jl. Oro Oro Dowo Gg 13', 'Pramuniaga Toko', '089766890911');
+(7, 'Sania Ika Putri', '1999-09-09', 'Perempuan', 'Jl. Oro Oro Dowo Gg 13', 'Pramuniaga Toko', '089766890911'),
+(8, 'Tiara Putri', '1999-07-22', 'Perempuan', 'Jl. Ikan Pari', 'Pegawai Swasta', '082133456121'),
+(10, 'Mira Alamiyah', '1999-03-29', 'Perempuan', 'Jl. Kedung Kandang 123', 'Mahasiswa', '081234432111');
 
 -- --------------------------------------------------------
 
@@ -179,15 +204,24 @@ CREATE TABLE IF NOT EXISTS `rekam_medis` (
   `gejala` varchar(50) NOT NULL,
   `objek` varchar(30) NOT NULL,
   `diagnosa` varchar(100) NOT NULL,
-  `tindakan` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `tindakan` varchar(100) NOT NULL,
+  `ukuran` int(8) NOT NULL,
+  `type` varchar(15) NOT NULL,
+  `nama_file` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rekam_medis`
 --
 
-INSERT INTO `rekam_medis` (`id_medis`, `id_pasien`, `id_antrian`, `id_dokter`, `tgl`, `tekanan_darah`, `tb`, `bb`, `gejala`, `objek`, `diagnosa`, `tindakan`) VALUES
-(7, 7, 30, 7, '2020-07-13', '100/90', 158, 50, 'Batuk Berdahak', 'Tenggorokan ', ' Alergi dengan debu', 'Therapy air hangat dan obat paratusin');
+INSERT INTO `rekam_medis` (`id_medis`, `id_pasien`, `id_antrian`, `id_dokter`, `tgl`, `tekanan_darah`, `tb`, `bb`, `gejala`, `objek`, `diagnosa`, `tindakan`, `ukuran`, `type`, `nama_file`) VALUES
+(7, 7, 30, 7, '2020-07-13', '100/90', 158, 50, 'Batuk Berdahak', 'Tenggorokan ', ' Alergi dengan debu', 'Therapy air hangat dan obat paratusin', 0, '', ''),
+(8, 8, 36, 9, '2020-07-22', '80/100', 160, 52, 'Pusing', 'Kepala', ' ', ' ', 0, '', ''),
+(9, 8, 37, 7, '2020-07-22', '100/90', 163, 45, 'Demam 30Derajat Celcius', 'Kepala', ' ', ' ', 0, '', ''),
+(10, 8, 38, 8, '2020-07-22', '80/100', 166, 50, 'Batuk', 'Tenggorokan', ' ', ' ', 0, '', ''),
+(11, 10, 39, 10, '2020-07-28', '100/90', 170, 66, 'Demam Tinggi Selama 4 Hari', 'Kepala', ' Demam, Alergi, Kecapekan', ' Pemberian obat paracetamol', 0, '', ''),
+(12, 7, 40, 10, '2020-08-18', '80/100', 1, 1, '1', '1', ' 2', ' 2', 219782, 'image/jpeg', '1731710177_ktp.jpg'),
+(13, 7, 41, 10, '2020-08-19', '90/100', 3, 3, '3', '3', ' 4', ' 4', 188144, 'image/jpeg', 'a.jpeg');
 
 -- --------------------------------------------------------
 
@@ -201,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(15) NOT NULL,
   `level` int(1) NOT NULL,
   `status` varchar(15) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -218,7 +252,14 @@ INSERT INTO `user` (`id_user`, `nama_lengkap`, `password`, `level`, `status`) VA
 (35, 'coba', '123', 3, 'Aktif'),
 (37, 'Sania Ika Putri', '123', 1, 'Aktif'),
 (38, 'dr. Arini Hapsari', '123', 3, 'Aktif'),
-(39, 'Ario Ramadani', '123', 2, 'Aktif');
+(39, 'Ario Ramadani', '123', 2, 'Aktif'),
+(40, 'dr. Anwar Artha Dilla', '123', 3, 'Aktif'),
+(41, 'dr. Suroso', '123', 3, 'Aktif'),
+(42, 'dr. Purbalin', '123', 3, 'Aktif'),
+(43, 'Tiara Putri', '123', 1, 'Aktif'),
+(44, 'Mira Alamiyah', '123', 1, 'Aktif'),
+(46, 'dr. Arief Maher', '123', 3, 'Aktif'),
+(47, 'Fira Aisha', '123', 2, 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -280,22 +321,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-MODIFY `id_admin` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_admin` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
-MODIFY `id_antrian` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `id_antrian` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-MODIFY `id_dokter` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_dokter` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-MODIFY `id_jadwal` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `id_jadwal` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `level`
 --
@@ -305,17 +346,17 @@ MODIFY `id` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-MODIFY `id_pasien` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_pasien` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `rekam_medis`
 --
 ALTER TABLE `rekam_medis`
-MODIFY `id_medis` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_medis` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
