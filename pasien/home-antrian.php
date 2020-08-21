@@ -125,33 +125,24 @@ if ($_SESSION['date'] < $now){
              <div class="pricing-description">
               <ul class="list-unstyled mt-3 mb-4">
                 <li class="pl-3 pr-3">Dilayani oleh dokter</li>
-                <select class="form-control" id="id_dokter" name="id_dokter" class="form-control" style="text-align-last:center" >
-                  <?php
-                  include '../process/conSQL.php';
-                  $month = date('m');
-                  $day = date('d');
-                  $year = date('Y');
-                  $today = $year . '-' . $month . '-' . $day;
-                  $jaddok = "SELECT id_dokter FROM jadwal WHERE tgl = '$today'";
-                  $res = mysqli_query($con, $jaddok);
-                  if(mysqli_num_rows($res) > 0){
-                   while($data = mysqli_fetch_assoc($res)){
-                    $dokter = $data['id_dokter'];
-                    $nama = $data['nama'];
-                    $dok = "SELECT * FROM dokter WHERE id_dokter = '$dokter'";
-                    $result = mysqli_query($con, $dok);
-                    $dataDok = mysqli_fetch_assoc($result); 
-                    $id_dokter= $dataDok['id_dokter'];
-                    $nama = $dataDok['nama'];
-                    echo "<option value=$id_dokter>$nama</option>";
-                    echo '<li class="pl-3 pr-3"><b>'.$nama.'</b></li>';
-                  }
-                }else{
-                  echo "<option>Mohon maaf hari ini tidak ada dokter praktik</option>";
-                }
-                mysqli_close($con);
-                ?>
-              </select>
+              <?php
+              include '../process/conSQL.php';
+              $month = date('m');
+              $day = date('d');
+              $year = date('Y');
+              $today = $year . '-' . $month . '-' . $day;
+              $jaddok = "SELECT id_dokter FROM jadwal WHERE tgl = '$today'";
+              $res = mysqli_query($con, $jaddok);
+              $data = mysqli_fetch_assoc($res);
+              $dokter = $data['id_dokter'];
+              $dok = "SELECT * FROM dokter WHERE id_dokter = '$dokter'";
+              $result = mysqli_query($con, $dok);
+              $dataDok = mysqli_fetch_assoc($result); 
+              $id_dokter= $dataDok['id_dokter'];
+              $nama = $dataDok['nama'];
+              echo '<li class="pl-3 pr-3"><b>'.$nama.' </b> </li>';
+              ?>    
+              <input type="hidden" name="id_dokter" id="id_dokter" value="<?php echo $id_dokter; ?>">
 
               <?php
               include '../process/conSQL.php';
@@ -185,9 +176,9 @@ if ($_SESSION['date'] < $now){
 <footer class="sticky-footer bg-white">
   <div class="container my-auto ">
     <div class="copyright text-center my-auto text-white small ">
-     <span>.</span>
-   </div>
- </div>
+      <span>.</span>
+    </div>
+  </div>
 
 </footer>  
 <footer class="sticky-footer bg-black">

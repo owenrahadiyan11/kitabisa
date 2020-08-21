@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2020 at 04:39 AM
+-- Generation Time: Aug 21, 2020 at 12:41 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `antrian` (
   `tgl` date NOT NULL,
   `pukul` time NOT NULL,
   `status` varchar(15) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `antrian`
@@ -75,7 +75,8 @@ INSERT INTO `antrian` (`id_antrian`, `id_pasien`, `id_dokter`, `nomor`, `tgl`, `
 (38, 8, 8, 3, '2020-07-22', '17:40:00', 'Sudah dilayani'),
 (39, 10, 10, 1, '2020-07-28', '12:00:00', 'Sudah dilayani'),
 (40, 7, 10, 1, '2020-08-18', '11:00:00', 'Sudah dilayani'),
-(41, 7, 10, 1, '2020-08-19', '17:00:00', 'Sudah dilayani');
+(41, 7, 10, 1, '2020-08-19', '17:00:00', 'Sudah dilayani'),
+(42, 7, 9, 1, '2020-08-21', '12:00:00', 'Sudah dilayani');
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `tgl` date NOT NULL,
   `jam_awal` time NOT NULL,
   `jam_akhir` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jadwal`
@@ -133,7 +134,10 @@ INSERT INTO `jadwal` (`id_jadwal`, `id_dokter`, `hari`, `tgl`, `jam_awal`, `jam_
 (39, 10, 'Jumat', '2020-07-30', '09:00:00', '11:00:00'),
 (40, 10, 'Senin', '2020-08-17', '07:00:00', '10:00:00'),
 (41, 10, 'Selasa', '2020-08-18', '11:00:00', '12:00:00'),
-(42, 10, 'Rabu', '2020-08-19', '17:00:00', '20:00:00');
+(42, 10, 'Rabu', '2020-08-19', '17:00:00', '20:00:00'),
+(43, 9, 'Kamis', '2020-08-21', '12:00:00', '15:00:00'),
+(44, 9, 'Jumat', '2020-08-22', '17:00:00', '19:00:00'),
+(45, 9, 'Sabtu', '2020-08-23', '08:00:00', '11:00:00');
 
 -- --------------------------------------------------------
 
@@ -207,8 +211,8 @@ CREATE TABLE IF NOT EXISTS `rekam_medis` (
   `tindakan` varchar(100) NOT NULL,
   `ukuran` int(8) NOT NULL,
   `type` varchar(15) NOT NULL,
-  `nama_file` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `nama_file` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rekam_medis`
@@ -220,8 +224,9 @@ INSERT INTO `rekam_medis` (`id_medis`, `id_pasien`, `id_antrian`, `id_dokter`, `
 (9, 8, 37, 7, '2020-07-22', '100/90', 163, 45, 'Demam 30Derajat Celcius', 'Kepala', ' ', ' ', 0, '', ''),
 (10, 8, 38, 8, '2020-07-22', '80/100', 166, 50, 'Batuk', 'Tenggorokan', ' ', ' ', 0, '', ''),
 (11, 10, 39, 10, '2020-07-28', '100/90', 170, 66, 'Demam Tinggi Selama 4 Hari', 'Kepala', ' Demam, Alergi, Kecapekan', ' Pemberian obat paracetamol', 0, '', ''),
-(12, 7, 40, 10, '2020-08-18', '80/100', 1, 1, '1', '1', ' 2', ' 2', 219782, 'image/jpeg', '1731710177_ktp.jpg'),
-(13, 7, 41, 10, '2020-08-19', '90/100', 3, 3, '3', '3', ' 4', ' 4', 188144, 'image/jpeg', 'a.jpeg');
+(12, 7, 40, 10, '2020-08-18', '80/100', 1, 1, '1', '1', ' 2', ' 2', 219782, 'image/jpeg', 'b.jpg'),
+(13, 7, 41, 10, '2020-08-19', '90/100', 3, 3, '3', '3', ' 4', ' 4', 188144, 'image/jpeg', 'a.jpeg'),
+(14, 7, 42, 9, '2020-08-21', '', 8, 8, '0', '0', ' ', ' ', 51614, 'image/png', 'LOGO POLITEKNIK NEGERI MALANG.PNG');
 
 -- --------------------------------------------------------
 
@@ -326,7 +331,7 @@ MODIFY `id_admin` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
-MODIFY `id_antrian` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+MODIFY `id_antrian` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `dokter`
 --
@@ -336,7 +341,7 @@ MODIFY `id_dokter` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-MODIFY `id_jadwal` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+MODIFY `id_jadwal` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `level`
 --
@@ -351,7 +356,7 @@ MODIFY `id_pasien` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT for table `rekam_medis`
 --
 ALTER TABLE `rekam_medis`
-MODIFY `id_medis` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `id_medis` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `user`
 --
